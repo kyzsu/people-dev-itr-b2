@@ -1,13 +1,18 @@
 import { createRoot } from "react-dom/client"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 import SearchParams from "./SearchParams.jsx"
+import Details from "./Details.jsx"
 
 const App = () => {
   return (
-    <div>
-      <h1>Peduli Hewan</h1>
-      <SearchParams />
-    </div>
+    <BrowserRouter>
+      <Link to="/">Peduli Hewan</Link>
+      <Routes>
+        <Route path="/details/:id" element={<Details />} />
+        <Route path="/" element={<SearchParams />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
