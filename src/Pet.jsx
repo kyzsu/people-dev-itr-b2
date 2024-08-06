@@ -1,7 +1,8 @@
 const Pet = (props) => {
-  const { animal, breed, location, name, images, id } = props
+  const { animal, breed, location, name, images, id } = props // destructuring
 
   let hero = "http://pets-images.dev-apis.com/pets/none.jpg" // gambar default
+
   if (images.length) {
     hero = images[0]
   }
