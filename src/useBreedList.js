@@ -7,5 +7,5 @@ export default function useBreedList(animal) {
 
   return [results?.data?.breeds ?? [], results.status]
 
-  // results?.data?.breeds ?? [] <=> results?.data?.breeds ? results?.data?.breeds : []
+  // results?.data?.breeds ?? [] <==> results?.data?.breeds ? results?.data?.breeds : []
 }
