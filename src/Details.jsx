@@ -1,14 +1,17 @@
-import { useState } from "react"
-import { useParams } from "react-router-dom"
+import { useState, useContext } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 
+import AdoptedPetContext from "./AdoptedPetContext.js"
 import fetchPet from "./fetchPet"
 import Carousel from "./Carousel.jsx"
 import ErrorBoundary from "./ErrorBoundary.jsx"
 import Modal from "./Modal.jsx"
 
 const Details = () => {
-  const [showModal, setShowModal] = useState(false) // TAMBAHKAN USESTATE MODAL
+  const navigate = useNavigate()
+  const [, setAdoptedPet] = useContext(AdoptedPetContext)
+  const [showModal, setShowModal] = useState(false)
   const params = useParams()
   const results = useQuery(["details", params.id], fetchPet)
   // parameter 1 dari useQuery disebut queryKey, parameter 2 adalah fungsinya.
@@ -41,7 +44,14 @@ const Details = () => {
             <div>
               <h1>Apakah kamu yakin?</h1>
               <div className="buttons">
-                <button>Yes</button>
+                <button
+                  onClick={() => {
+                    setAdoptedPet(pet)
+                    navigate("/")
+                  }}
+                >
+                  Yes
+                </button>
                 <button onClick={() => setShowModal(false)}>No</button>
               </div>
             </div>
