@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 
 import fetchPet from "./fetchPet"
 import Carousel from "./Carousel.jsx" // IMPOR CAROUSEL
+import ErrorBoundary from "./ErrorBoundary.jsx"
 
 const Details = () => {
   const params = useParams()
@@ -35,4 +36,10 @@ const Details = () => {
   )
 }
 
-export default Details
+export default function DetailsErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  )
+}
