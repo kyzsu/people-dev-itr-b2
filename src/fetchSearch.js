@@ -5,7 +5,7 @@ async function fetchSearch({ queryKey }) {
 
   // melakukan consume API
   const res = await fetch(
-    `http://pets-v2.dev-apis/pets?animal=${animal}&location=${location}&breed=${breed}`
+    `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
   )
 
   if (!res.ok) {
